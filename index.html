@@ -3,509 +3,594 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adarsh V Pujar | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <title>Adarsh V Pujar | Premium Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --bg-dark: #090d16;
-      --bg-card: rgba(20, 27, 45, 0.7);
+      --bg-deep: #05070f;
+      --bg-card: rgba(13, 18, 35, 0.8);
       --accent: #6366f1;
-      --accent-glow: rgba(99, 102, 241, 0.3);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      --accent-glow: rgba(99, 102, 241, 0.4);
+      --text-bright: #f8fafc;
+      --text-dim: #94a3b8;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      scroll-behavior: smooth;
     }
 
     body {
-      background-color: var(--bg-dark);
+      background-color: var(--bg-deep);
       background-image: 
-        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.1) 0px, transparent 50%);
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.12) 0%, transparent 40%);
       background-attachment: fixed;
-      color: var(--text-main);
+      color: var(--text-bright);
       font-family: 'Plus Jakarta Sans', sans-serif;
-      padding-bottom: 60px;
+      overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    /* Fixed Modern Glass Floating Navbar */
-    .nav-container {
+    #main-dashboard-view {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      opacity: 1;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Fixed Glass Header */
+    .top-bar {
       position: fixed;
-      top: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 500px;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 30px;
-      padding: 10px 20px;
-      z-index: 1000;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background: rgba(5, 7, 15, 0.4);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.4s ease;
+    }
+
+    .top-bar.sticky {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .top-bar-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .top-bar-user img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
     }
 
     .nav-links {
       display: flex;
-      justify-content: space-between;
+      gap: 20px;
       list-style: none;
     }
 
     .nav-links a {
-      color: var(--text-muted);
+      color: var(--text-dim);
       text-decoration: none;
-      font-weight: 600;
       font-size: 14px;
-      padding: 8px 14px;
-      border-radius: 20px;
-      transition: all 0.3s ease;
+      font-weight: 600;
+      transition: color 0.3s;
     }
 
-    .nav-links a:hover {
-      color: var(--text-main);
-      background: rgba(255, 255, 255, 0.05);
-    }
+    .nav-links a:hover { color: var(--accent); }
 
-    /* Main Content Wrapper & Scrolling Sections */
-    .wrapper {
-      max-width: 800px;
-      margin: 100px auto 0 auto;
-      padding: 0 20px;
-    }
-
-    section {
-      margin-bottom: 80px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-
-    @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Profile Header Styling */
-    .profile-header {
+    /* Cinematic Hero with Shrinking Animation */
+    .hero-container {
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      margin-bottom: 50px;
+      padding: 0 20px;
+      transition: all 0.5s ease;
     }
 
-    .avatar-wrapper {
-      width: 130px;
-      height: 130px;
-      margin: 0 auto 20px auto;
+    .hero-avatar {
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      padding: 4px;
+      padding: 5px;
       background: linear-gradient(135deg, var(--accent), #a855f7);
-      box-shadow: 0 0 25px var(--accent-glow);
+      box-shadow: 0 0 40px var(--accent-glow);
+      margin-bottom: 25px;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .avatar-wrapper img {
+    .hero-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
-      background: #1e293b;
     }
 
-    .profile-header h1 {
-      font-size: 32px;
+    .hero-container h1 {
+      font-size: 48px;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
-      background: linear-gradient(135deg, #fff 60%, var(--text-muted));
+      background: linear-gradient(to right, #ffffff, #94a3b8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
     }
 
-    .profile-header p {
+    .hero-container p {
       color: var(--accent);
+      font-size: 18px;
       font-weight: 600;
-      font-size: 16px;
+      letter-spacing: 1px;
     }
 
-    h2.section-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 25px;
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 30px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
     }
 
-    h2.section-title::after {
+    .section-title::after {
       content: '';
       flex: 1;
       height: 1px;
-      background: rgba(255, 255, 255, 0.1);
+      background: linear-gradient(to right, rgba(255,255,255,0.1), transparent);
     }
 
     .card {
       background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
 
-    .about-text {
-      color: var(--text-muted);
-      line-height: 1.7;
-      font-size: 15px;
-      text-align: justify;
+    /* Education Block */
+    .edu-box {
+      border-left: 2px solid var(--accent);
+      padding-left: 20px;
+      margin-bottom: 25px;
     }
 
-    /* Modern Project Grid Layout */
-    .project-grid {
+    .college-card-anchor {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .college-card-anchor:hover {
+      background: rgba(99, 102, 241, 0.05);
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .college-logo-banner {
+      width: 100%;
+      height: 180px;
+      background: #111827;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+
+    .college-logo-banner img { width: 100%; height: 100%; object-fit: cover; }
+    .timeline-date { font-size: 13px; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+
+    /* Project Dashboard Layout Grid */
+    .project-container-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
     }
 
-    .project-card {
+    .project-card-v2 {
       background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 24px;
       overflow: hidden;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .project-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(99, 102, 241, 0.4);
-      box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15);
+    .project-card-v2:hover {
+      transform: translateY(-8px);
+      border-color: rgba(99, 102, 241, 0.3);
+      box-shadow: 0 20px 40px rgba(99,102,241,0.15);
     }
 
-    .project-img {
+    .project-thumb {
       width: 100%;
-      height: 160px;
-      background: #111827;
-      position: relative;
+      height: 200px;
+      background: #0f1424;
+      overflow: hidden;
     }
 
-    .project-img img {
+    .project-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.8;
+      transition: transform 0.5s ease;
     }
 
-    .project-body {
-      padding: 20px;
+    .project-card-v2:hover .project-thumb img {
+      transform: scale(1.05);
     }
 
+    .project-details-body { padding: 25px; }
     .project-tag {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--accent);
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: inline-block;
     }
 
-    .project-body h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .project-body p {
-      color: var(--text-muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    /* Skills & Education Badges */
-    .badge-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .badge {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .edu-item {
-      margin-bottom: 20px;
-    }
-    .edu-item:last-child { margin-bottom: 0; }
-    .edu-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    /* Dynamic Popup Modals */
-    .modal-overlay {
+    /* Inside Project Deep Dive Multi-Pages View Framework */
+    .subpage-container {
       display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(5, 7, 12, 0.85);
-      backdrop-filter: blur(10px);
-      z-index: 10000;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .modal-box {
-      background: #0f1524;
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      border-radius: 24px;
-      max-width: 550px;
-      width: 100%;
-      padding: 30px;
-      position: relative;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
-      animation: modalScaleUp 0.3s ease-out;
-    }
-
-    @keyframes modalScaleUp {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .modal-close {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(255,255,255,0.05);
-      border: none;
-      color: var(--text-muted);
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 100vh;
+      background: var(--bg-deep);
+      z-index: 2000;
+      padding: 60px 20px;
     }
 
-    .modal-close:hover { color: white; background: rgba(255,255,255,0.1); }
-    .modal-title { font-size: 22px; font-weight: 700; margin-bottom: 20px; color: #fff; }
-    .modal-field { margin-bottom: 15px; }
-    .modal-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
-    .modal-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .subpage-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-    /* Beautiful Social Bar Layout with Real Logos */
-    .social-bar {
+    .subpage-inner.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-bright);
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 35px;
+      transition: all 0.3s;
+    }
+
+    .back-btn:hover {
+      background: var(--text-bright);
+      color: var(--bg-deep);
+    }
+
+    .subpage-hero-img {
+      width: 100%;
+      height: 380px;
+      border-radius: 24px;
+      object-fit: cover;
+      margin-bottom: 35px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+
+    /* Hobbies Block Details Grid */
+    .interests-layout-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .interest-card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.04);
+      transition: transform 0.3s ease;
+    }
+
+    .interest-card:hover { transform: translateY(-4px); }
+    .interest-photo { width: 100%; height: 160px; background: #111625; }
+    .interest-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .interest-caption { padding: 20px; }
+
+    /* Technical Elements Framework */
+    .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 12px;
-      margin-top: 20px;
+      gap: 15px;
     }
 
-    .social-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.03);
+    .skill-item {
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 14px;
-      border-radius: 14px;
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: 14px;
+      padding: 16px;
+      border-radius: 16px;
+      text-align: center;
       font-weight: 600;
+      font-size: 13px;
       transition: all 0.3s ease;
     }
 
-    .social-btn svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
+    .skill-item:hover {
+      background: var(--accent);
+      box-shadow: 0 10px 20px var(--accent-glow);
     }
 
-    .social-btn:hover {
+    .strengths-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+    .strength-badge {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .connect-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    .connect-link-pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 14px;
+      border-radius: 14px;
+      color: var(--text-bright);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .connect-link-pill svg { width: 16px; height: 16px; fill: currentColor; }
+    .connect-link-pill:hover {
       background: var(--accent);
       box-shadow: 0 10px 20px var(--accent-glow);
       transform: translateY(-2px);
-      border-color: transparent;
     }
   </style>
 </head>
 <body>
 
-  <nav class="nav-container">
+  <div class="top-bar" id="sticky-header">
+    <div class="top-bar-user">
+      <img src="my.jpg" alt="Adarsh">
+      <h2 style="font-size:16px; font-weight:700;">Adarsh V Pujar</h2>
+    </div>
     <ul class="nav-links">
-      <li><a href="#about-sec">About</a></li>
-      <li><a href="#skills-sec">Skills</a></li>
-      <li><a href="#projects-sec">Projects</a></li>
-      <li><a href="#contact-sec">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#academics">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-  </nav>
+  </div>
 
-  <div class="wrapper">
-
-    <header class="profile-header">
-      <div class="avatar-wrapper">
+  <div id="main-dashboard-view">
+    
+    <div class="hero-container" id="hero-node">
+      <div class="hero-avatar" id="avatar-frame">
         <img src="my.jpg" alt="Adarsh V Pujar">
       </div>
       <h1>Adarsh V Pujar</h1>
       <p>Information Science Engineer & Frontend Developer</p>
-    </header>
+    </div>
 
-    <section id="about-sec">
+    <section id="about">
       <h2 class="section-title">About Me</h2>
       <div class="card">
-        <p class="about-text">
-          Motivated and detail-oriented Information Science and Engineering graduate from NIE Institute of Technology with a strong foundation in programming and web development. Passionate about designing beautiful user interfaces, interactive elements, and highly scalable responsive web applications.
+        <p style="color:var(--text-dim); font-size:15px; text-align:justify;">
+          Motivated and detail-oriented Information Science and Engineering graduate from NIE Institute of Technology with a strong foundation in programming and web development. Passionate about creating responsive frontend architectures, clean visual elements, and scalable interactive user dashboards.
         </p>
       </div>
     </section>
 
-    <section id="skills-sec">
-      <h2 class="section-title">Skills & Education</h2>
-      <div class="card" style="margin-bottom: 20px;">
-        <h3 style="font-size:16px; margin-bottom:12px; color:var(--text-main)">Technical Expertise</h3>
-        <div class="badge-container">
-          <div class="badge">HTML5 / CSS3</div>
-          <div class="badge">JavaScript (ES6+)</div>
-          <div class="badge">Bootstrap</div>
-          <div class="badge">Angular Framework</div>
-          <div class="badge">Python</div>
-          <div class="badge">Java / C</div>
-          <div class="badge">SQL Databases</div>
-        </div>
+    <section id="skills">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-item">HTML5 / CSS3</div>
+        <div class="skill-item">JavaScript (ES6+)</div>
+        <div class="skill-item">Bootstrap</div>
+        <div class="skill-item">Angular</div>
+        <div class="skill-item">Python</div>
+        <div class="skill-item">Java / C</div>
+        <div class="skill-item">SQL Databases</div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3 style="font-size:16px; margin-bottom:15px; color:var(--text-main)">Academic Background</h3>
-        <div class="edu-item">
-          <div class="edu-meta"><span>B.E. Information Science & Engineering</span><span>2021 - 2025</span></div>
-          <p style="font-size:14px; font-weight:600;">NIE Institute of Technology</p>
-          <p style="font-size:13px; color:var(--text-muted)">CGPA Score: 7.8%</p>
+    <section id="strengths">
+      <h2 class="section-title">Professional Strengths</h2>
+      <div class="strengths-grid">
+        <div class="strength-badge">Problem Solving</div>
+        <div class="strength-badge">Adaptability</div>
+        <div class="strength-badge">Time Management</div>
+        <div class="strength-badge">Creative Thinking</div>
+        <div class="strength-badge">Out of the Box Thinking</div>
+      </div>
+    </section>
+
+    <section id="academics">
+      <h2 class="section-title">Education & Credentials</h2>
+      <div class="card" style="display:flex; flex-direction:column; gap:20px;">
+        
+        <div class="edu-box">
+          <div class="timeline-date">2021 - 2025</div>
+          <a href="https://nieit.ac.in" target="_blank" class="college-card-anchor">
+            <div class="college-logo-banner">
+              <img src="31757.jpg" alt="NIEIT Campus Banner">
+            </div>
+            <h4 style="font-size:16px; color:#fff; margin-bottom:4px;">NIE Institute of Technology</h4>
+            <p style="font-size:14px; color:var(--accent);">B.E. — Information Science & Engineering</p>
+            <p style="font-size:13px; color:var(--text-dim); margin-top:5px;">Academic Standing Metrics: 7.8 CGPA</p>
+          </a>
+        </div>
+
+        <div class="edu-box">
+          <div class="timeline-date">2019 - 2021</div>
+          <div style="padding:5px 20px;">
+            <h4 style="font-size:16px; color:#fff;">VVS Golden Jubilee PU College</h4>
+            <p style="font-size:13px; color:var(--text-dim);">Pre-University Completed — Score: 87.28%</p>
+          </div>
+        </div>
+
+        <div class="edu-box">
+          <div class="timeline-date">2018 - 2019</div>
+          <div style="padding:5px 20px;">
+            <h4 style="font-size:16px; color:#fff;">Vidya Vardhaka Pandit Nehru High School</h4>
+            <p style="font-size:13px; color:var(--text-dim);">SSLC Completion Log — Score: 89.38%</p>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;">
+          <h4 style="color:#fff; margin-bottom:8px; font-size:14px; text-transform:uppercase;">Certifications</h4>
+          <p style="font-size:14px; color:var(--text-dim);">• Full Stack UI Web Development Internship Credentials — HP Pavilion</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="card" style="display:flex; flex-direction:column; gap:20px;">
+        <div class="edu-box">
+          <div class="timeline-date">Internship</div>
+          <h4 style="color:#fff;">Frontend Developer Intern</h4>
+          <p style="font-size:14px; color:var(--accent)">HP Pavilion, Bangalore</p>
+          <p style="font-size:14px; color:var(--text-dim); margin-top:5px;">• Engineered interactive user paths and cross-browser interfaces utilizing HTML5, CSS3, JavaScript, and Bootstrap responsive layouts.</p>
+        </div>
+        <div class="edu-box">
+          <div class="timeline-date">Professional</div>
+          <h4 style="color:#fff;">Marketing Executive</h4>
+          <p style="font-size:14px; color:var(--accent)">S & S Co Inc (PhoneMax)</p>
+          <p style="font-size:14px; color:var(--text-dim); margin-top:5px;">• Managed regional product visibility operations, improving retail sales indices by 25%.</p>
         </div>
       </div>
     </section>
 
-    <section id="projects-sec">
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="project-grid">
+    <section id="projects">
+      <h2 class="section-title">Engineering Projects</h2>
+      <div class="project-container-grid">
         
-        <div class="project-card" onclick="launchModal('modal1')">
-          <div class="project-img">
-            <img src="floor.jpg" alt="Communication System">
+        <div class="project-card-v2" onclick="navigateToProjectPage('page-project-communication')">
+          <div class="project-thumb">
+            <img src="31756.jpg" alt="Two-Way Communication System Hub">
           </div>
-          <div class="project-body">
-            <span class="project-tag">API Integration</span>
-            <h3>Two-Way Communication System</h3>
-            <p>Voice and text optimization platform engineered to assist real-time accessibility paths for deaf users.</p>
+          <div class="project-details-body">
+            <span class="project-tag">Speech APIs / JavaScript</span>
+            <h3 style="color:#fff; margin-bottom:8px; font-size:18px;">Two-Way Communication System</h3>
+            <p style="font-size:13px; color:var(--text-dim)">Click to launch real-time text parsing system engineered for deaf accessibility channels.</p>
           </div>
         </div>
 
-        <div class="project-card" onclick="launchModal('modal2')">
-          <div class="project-img">
-            <img src="my.jpg" alt="Car Management System">
+        <div class="project-card-v2" onclick="navigateToProjectPage('page-project-cars')">
+          <div class="project-thumb">
+            <img src="31738.jpg" alt="Car Management System Controls">
           </div>
-          <div class="project-body">
-            <span class="project-tag">Full Stack Development</span>
-            <h3>Car Management System</h3>
-            <p>Database logistics application mapping operational inventories, reservations records, and user management.</p>
+          <div class="project-details-body">
+            <span class="project-tag">Full Stack / SQL Database</span>
+            <h3 style="color:#fff; margin-bottom:8px; font-size:18px;">Car Management System</h3>
+            <p style="font-size:13px; color:var(--text-dim)">Click to review core Python operational matrix managing commercial fleet data grids.</p>
           </div>
         </div>
 
       </div>
     </section>
 
-    <section id="contact-sec">
-      <h2 class="section-title">Get In Touch</h2>
+    <section id="interests">
+      <h2 class="section-title">Interests & Hobbies</h2>
+      <div class="interests-layout-grid">
+        <div class="interest-card">
+          <div class="interest-photo"><img src="my.jpg" alt="Cricket"></div>
+          <div class="interest-caption">
+            <h4 style="color:#fff; margin-bottom:4px;">Cricket</h4>
+            <p style="font-size:13px; color:var(--text-dim);">Passionate about playing active tournaments and analyzing real-time match records.</p>
+          </div>
+        </div>
+        <div class="interest-card">
+          <div class="interest-photo"><img src="floor.jpg" alt="Traveling"></div>
+          <div class="interest-caption">
+            <h4 style="color:#fff; margin-bottom:4px;">Traveling</h4>
+            <p style="font-size:13px; color:var(--text-dim);">Exploring natural architecture designs, historic locations, and diverse cultures.</p>
+          </div>
+        </div>
+        <div class="interest-card">
+          <div class="interest-photo"><img src="floor.jpg" alt="Beach Sunsets"></div>
+          <div class="interest-caption">
+            <h4 style="color:#fff; margin-bottom:4px;">Beach Sunsets</h4>
+            <p style="font-size:13px; color:var(--text-dim);">Capturing natural transitions, high-contrast illumination curves, and landscape visuals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Connect with Me</h2>
       <div class="card">
-        <p style="color:var(--text-muted); font-size:14px; margin-bottom:20px;">Feel free to reach out across any professional profile link handles below:</p>
-        
-        <div class="social-bar">
-          <a href="mailto:adarshvpujar143@gmail.com" class="social-btn">
+        <div class="connect-row">
+          <a href="mailto:adarshvpujar143@gmail.com" class="connect-link-pill">
             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             Email
           </a>
-          <a href="tel:+919886103154" class="social-btn">
+          <a href="tel:+919886103154" class="connect-link-pill">
             <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             Call
           </a>
-          <a href="https://github.com/adarshvpujar143-cyber" target="_blank" class="social-btn">
+          <a href="https://github.com/adarshvpujar143-cyber" target="_blank" class="connect-link-pill">
             <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
             GitHub
           </a>
-          <a href="https://linkedin.com" target="_blank" class="social-btn">
-            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-            LinkedIn
-          </a>
-          <a href="https://instagram.com" target="_blank" class="social-btn">
-            <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
-            Instagram
-          </a>
-        </div>
-        <p style="margin-top:25px; font-size:13px; color:var(--text-muted); text-align:center;">📍 Kuvempunagar M Block, Mysore, Karnataka – 570023</p>
-      </div>
-    </section>
-
-  </div>
-
-  <div id="modal1" class="modal-overlay" onclick="dismissModal(event)">
-    <div class="modal-box">
-      <button class="modal-close" onclick="document.getElementById('modal1').style.display='none'">&times;</button>
-      <div class="modal-title">Two-Way Communication System</div>
-      
-      <div class="modal-field">
-        <div class="modal-label">Project Description</div>
-        <div class="modal-desc">An advanced, interactive accessibility solution engineered to minimize conversational latency blocks between deaf users and surrounding settings. It turns voice streams instantly into high-contrast text layouts.</div>
-      </div>
-      <div class="modal-field">
-        <div class="modal-label">Technologies Used</div>
-        <div class="modal-desc">HTML5, CSS3, JavaScript (ES6), Web Speech-to-Text Recognition API.</div>
-      </div>
-      <div class="modal-field">
-        <div class="modal-label">Project Outcome</div>
-        <div class="modal-desc">Achieved smooth real-time conversational processing with latency under one second, dramatically increasing tool usability benchmarks.</div>
-      </div>
-    </div>
-  </div>
-
-  <div id="modal2" class="modal-overlay" onclick="dismissModal(event)">
-    <div class="modal-box">
-      <button class="modal-close" onclick="document.getElementById('modal2').style.display='none'">&times;</button>
-      <div class="modal-title">Car Management System</div>
-      
-      <div class="modal-field">
-        <div class="modal-label">Project Description</div>
-        <div class="modal-desc">A full-stack tracking framework mapping structured inventories for commercial vehicle configurations. Built with dedicated record views tracking rental metrics, logistical assignments, and customer account data.</div>
-      </div>
-      <div class="modal-field">
-        <div class="modal-label">Technologies Used</div>
-        <div class="modal-desc">Python, Relational SQL Database System, Object-Oriented Application Logic.</div>
-      </div>
-      <div class="modal-field">
-        <div class="modal-label">Project Outcome</div>
-        <div class="modal-desc">Successfully optimized administrative database handling constraints, making multi-car logistics processing smoother and preventing duplicate structural updates.</div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function launchModal(id) {
-      document.getElementById(id).style.display = 'flex';
-    }
-    function dismissModal(e) {
-      if(e.target.classList.contains('modal-overlay')) {
-        e.target.style.display = 'none';
-      }
-    }
-  </script>
-</body>
-</html>
+          <a href="https://linkedin.com" target="_blank" class="connect-link-pill">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1
+                                       
