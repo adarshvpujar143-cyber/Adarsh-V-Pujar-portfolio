@@ -7,15 +7,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="Professional portfolio website of Adarsh V Pujar, Information Science and Engineering Graduate & Frontend Developer.">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
-  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-72x72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-114x114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-144x144-precomposed.png">
-  <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Sofia&display=swap' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Amaranth&display=swap' rel='stylesheet'>
+  
   <link rel="stylesheet" href="normalize.min.css">
   <link rel="stylesheet" href="main.css">
 
@@ -23,90 +20,130 @@
   <script src="jquery.hashchange.min.js"></script>
   <script src="jquery.easytabs.min.js"></script>
   <script src="main.js"></script>
-  
+
+  <style>
+    /* Direct premium overrides to eliminate dullness and fix background layout issues */
+    body {
+      background: linear-gradient(135deg, #12192c 0%, #1c2646 100%) !important;
+      color: #e2e8f0 !important;
+      font-family: 'Amaranth', sans-serif;
+    }
+    .main-container {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    #logo h6 {
+      color: #6366f1 !important;
+      font-size: 28px !important;
+      text-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+    }
+    .etabs {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+      padding-bottom: 10px;
+    }
+    .etabs .tab a {
+      background: rgba(255, 255, 255, 0.05) !important;
+      color: #94a3b8 !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin-right: 5px;
+      transition: all 0.3s ease;
+    }
+    .etabs .tab.active a {
+      background: #6366f1 !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    }
+    .project-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 20px;
+    }
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 340px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      border-color: #6366f1;
+    }
+    .project-img-wrapper {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      background: #0f172a;
+    }
+    .project-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .project-info-body {
+      padding: 15px;
+    }
+    .project-tag {
+      background: rgba(99, 102, 241, 0.2);
+      color: #818cf8;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 
-<body class="bg-fixed bg-1">
+<body class="bg-fixed">
   <div class="main-container">
     <div class="main wrapper clearfix">
 
       <header id="header">
         <div id="logo">
-          <h6>
-            Adarsh V Pujar
-          </h6>
-          <h4>
-            Frontend Developer / Information Science Engineer
-          </h4>
-        </div>
-      </header>
-
-      <header id="header">
-        <div id="helloworld">
-          <h1>
-            Hello, World !
-          </h1>
+          <h6>Adarsh V Pujar</h6>
+          <h4 style="color: #94a3b8;">Frontend Developer / Information Science Engineer</h4>
         </div>
       </header>
 
       <div id="tab-container" class="tab-container">
 
         <ul class='etabs'>
-
           <li class='tab' id="tab-about">
-            <a href="#about">
-              <i class="icon-user"></i>
-              <span>
-                About Me
-              </span>
-            </a>
+            <a href="#about"><i class="icon-user"></i> <span>About Me</span></a>
           </li>
-
           <li class='tab'>
-            <a href="#resume">
-              <i class="icon-file-text"></i>
-              <span>
-                Skills & Experience
-              </span>
-            </a>
+            <a href="#resume"><i class="icon-file-text"></i> <span>Skills & Experience</span></a>
           </li>
-
           <li class='tab'>
-            <a href="#portfolio">
-              <i class="icon-heart"></i>
-              <span>
-                Projects
-              </span>
-            </a>
+            <a href="#portfolio"><i class="icon-heart"></i> <span>Projects</span></a>
           </li>
-
           <li class='tab'>
-            <a href="#contact">
-              <i class="icon-envelope"></i>
-              <span>
-                Contact
-              </span>
-            </a>
+            <a href="#contact"><i class="icon-envelope"></i> <span>Contact</span></a>
           </li>
-
         </ul>
+
         <div id="tab-data-wrap">
 
           <div id="about">
             <section class="clearfix">
               <div class="g2">
-                <div class="photo">
-                  <img src="my.jpg" alt="Adarsh V Pujar">
+                <div class="photo" style="border: 3px solid #6366f1; border-radius: 50%; overflow: hidden; width: 150px; height: 150px;">
+                  <img src="my.jpg" alt="Adarsh V Pujar" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info">
-                  <h2>
-                    <p></p>
-                    Adarsh V Pujar
-                  </h2>
-                  <h4>
-                    Information Science & Engineering Graduate
-                  </h4>
-                  <p style="text-align: justify; line-height: 1.5;">
+                  <h2 style="color: #ffffff; margin-top: 15px;">Adarsh V Pujar</h2>
+                  <p style="text-align: justify; line-height: 1.6; color: #cbd5e1;">
                     Motivated and detail-oriented Information Science and Engineering graduate with a strong foundation in programming and web development. Passionate about developing user-friendly and impactful applications. Eager to begin a professional career where I can apply my technical skills, learn continuously, and contribute to innovative projects.
                   </p>
                 </div>
@@ -115,149 +152,65 @@
               <div class="g1">
                 <div class="main-links sidebar">
                   <ul>
-                    <li>
-                      <a href="#resume">
-                        View Skills & Experience
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#portfolio">
-                        View My Projects
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#contact">
-                        Get In Touch
-                      </a>
-                    </li>
+                    <li><a href="#resume">View Skills & Experience</a></li>
+                    <li><a href="#portfolio">View My Projects</a></li>
+                    <li><a href="#contact">Get In Touch</a></li>
                   </ul>
                 </div>
               </div>
-              <div class="break">
-              </div>
+
+              <div class="break"></div>
+
               <div class="contact-info">
                 <div class="g1">
                   <div class="item-box clearfix">
-                    <i class="icon-envelope"></i>
                     <div class="item-data">
-                      <h3>
-                        <a href="mailto:adarshvpujar143@gmail.com">
-                          adarshvpujar143@gmail.com
-                        </a>
-                      </h3>
-                      <p>
-                        Email Address
-                      </p>
+                      <h3 style="color: #ffffff;"><a href="mailto:adarshvpujar143@gmail.com" style="color: #818cf8;">adarshvpujar143@gmail.com</a></h3>
+                      <p>Email Address</p>
                     </div>
                   </div>
                 </div>
                 <div class="g1">
                   <div class="item-box clearfix">
-                    <i class="icon-phone"></i>
                     <div class="item-data">
-                      <h3>
-                        <a href="tel:+919886103154">
-                          9886103154
-                        </a>
-                      </h3>
-                      <p>
-                        Phone Number
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="g1">
-                  <div class="item-box clearfix">
-                    <i class="icon-github"></i>
-                    <div class="item-data">
-                      <h3>
-                        <a href="https://github.com/adarshvpujar143-cyber">
-                          GitHub Profile
-                        </a>
-                      </h3>
-                      <p>
-                        adarshvpujar143-cyber
-                      </p>
+                      <h3 style="color: #ffffff;"><a href="tel:+919886103154" style="color: #818cf8;">9886103154</a></h3>
+                      <p>Phone Number</p>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
           </div>
+
           <div id="resume">
             <section class="clearfix">
-              
               <div class="g2">
-                <h3>
-                  Technical Skills
-                </h3>
-                <div class="meter emerald">
-                  <span style="width: 90%">
-                    <span>
-                      Full Stack (HTML, CSS, JavaScript)
-                    </span>
-                  </span>
-                </div>
-                <div class="meter emerald">
-                  <span style="width: 85%">
-                    <span>
-                      Bootstrap & Angular
-                    </span>
-                  </span>
-                </div>
-                <div class="meter emerald">
-                  <span style="width: 80%">
-                    <span>
-                      Python
-                    </span>
-                  </span>
-                </div>
-                <div class="meter emerald">
-                  <span style="width: 75%">
-                    <span>
-                      Java & C Programming
-                    </span>
-                  </span>
-                </div>
-                <div class="meter emerald">
-                  <span style="width: 80%">
-                    <span>
-                      SQL Database
-                    </span>
-                  </span>
-                </div>
-                <div class="break"></div>
+                <h3>Technical Skills</h3>
+                <div class="meter emerald"><span style="width: 90%"><span>Full Stack (HTML, CSS, JavaScript)</span></span></div>
+                <div class="meter emerald"><span style="width: 85%"><span>Bootstrap & Angular</span></span></div>
+                <div class="meter emerald"><span style="width: 80%"><span>Python</span></span></div>
+                <div class="meter emerald"><span style="width: 75%"><span>Java & C Programming</span></span></div>
+                <div class="meter emerald"><span style="width: 80%"><span>SQL Database</span></span></div>
               </div>
 
               <div class="g1">
-                <h3>
-                  Education
-                </h3>
+                <h3>Education</h3>
                 <p>
                   <strong>B.E. (Information Science & Engineering)</strong><br>
                   NIE Institute of Technology (2021 - 2025)<br>
                   CGPA: 7.8%
                 </p>
-                <hr style="border-top: 1px dashed #ccc; margin: 10px 0;">
                 <p>
-                  <strong>Pre-University (PU) - Science (PCMB)</strong><br>
-                  VVS Golden Jubilee PU College (2019 - 2021)<br>
+                  <strong>Pre-University (PU) - Science</strong><br>
+                  VVS Golden Jubilee PU College<br>
                   Percentage: 87.28%
-                </p>
-                <hr style="border-top: 1px dashed #ccc; margin: 10px 0;">
-                <p>
-                  <strong>SSLC</strong><br>
-                  Vidya Vardhaka Pandit Nehru High School (2018 - 2019)<br>
-                  Percentage: 89.38%
                 </p>
               </div>
 
               <div class="break"></div>
 
               <div class="g2">
-                <h3>
-                  Experience
-                </h3>
+                <h3>Professional Experience</h3>
                 <p>
                   <strong>FRONTEND DEVELOPER INTERN</strong> — <em>HP Pavilion, Bangalore</em><br>
                   • Developed responsive web pages using HTML, CSS, JavaScript, and Bootstrap.<br>
@@ -266,118 +219,69 @@
                 <br>
                 <p>
                   <strong>MARKETING EXECUTIVE</strong> — <em>S & S Co Inc (PhoneMax)</em><br>
-                  • Increased regional sales for PhoneMax by 25% through targeted promotional campaigns and strategic partnerships with local retail distributors.
+                  • Increased regional sales for PhoneMax by 25% through targeted promotional campaigns.
                 </p>
               </div>
-
-              <div class="g1">
-                <h3>
-                  Strengths
-                </h3>
-                <span class="label label-info">Quick Learner</span>
-                <span class="label label-info">Team Player</span>
-                <span class="label label-info">Problem Solving</span>
-                <span class="label label-info">Adaptability</span>
-                
-                <h3 style="margin-top: 20px;">
-                  Languages
-                </h3>
-                <p>English, Kannada, Hindi</p>
-              </div>
-
             </section>
           </div>
 
           <div id="portfolio">
             <section class="clearfix">
-              <div class="project-section">
+              <h3 style="color: #ffffff; margin-bottom: 10px;">My Engineering Projects</h3>
+              <p style="color: #94a3b8; margin-bottom: 20px;">Click on the card structure layout below to review functional details.</p>
+              
+              <div class="project-grid">
                 
-                <div class="project-container" style="width: 100%; max-width: 400px; margin-bottom: 20px;">
-                  <div class="project-img-container" onclick="document.getElementById('modal-wrapper').style.display='block'">
-                    <img src="floor.jpg" alt="Two-Way Communication System">
+                <div class="project-card" onclick="alert('Project Detail:\n\nTwo-Way Communication System for Deaf People\n\nEnables structured voice/text inputs to instantly parse into readable presentation layout displays.')">
+                  <div class="project-img-wrapper">
+                    <img src="floor.jpg" alt="Communication System">
                   </div>
-                  <p class="project-title" style="font-weight: bold; margin-top: 10px;">Two-Way Communication System for Deaf People</p>
-                  <p style="font-size: 12px; color: #666; padding: 0 10px;">Enables voice or text input to be converted into readable format for deaf users. Focused on improving accessibility and real-time communication.</p>
+                  <div class="project-info-body">
+                    <span class="project-tag">JavaScript / Speech API</span>
+                    <h4 style="color: #ffffff; margin: 0 0 8px 0;">Two-Way Communication System</h4>
+                    <p style="font-size: 13px; color: #94a3b8; margin: 0; line-height: 1.4;">
+                      Enables real-time conversion of voice inputs into highly legible text, optimizing interpersonal communication accessibility.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="project-card" onclick="alert('Project Detail:\n\nCar Management System\n\nFull stack layout dashboard to track rental availability, automotive specifications, registration logistics, and user accounts profiles.')">
+                  <div class="project-img-wrapper">
+                    <img src="my.jpg" alt="Car Management System">
+                  </div>
+                  <div class="project-info-body">
+                    <span class="project-tag">Full Stack / SQL Database</span>
+                    <h4 style="color: #ffffff; margin: 0 0 8px 0;">Car Management System</h4>
+                    <p style="font-size: 13px; color: #94a3b8; margin: 0; line-height: 1.4;">
+                      A dynamic control panel application designed to manage automotive inventories, rental logs, maintenance schedules, and customer booking data.
+                    </p>
+                  </div>
                 </div>
 
               </div>
-              
-              <div id="modal-wrapper" class="modal">
-                <form class="modal-content animate" onsubmit="event.preventDefault();">
-                  <div class="imgcontainer">
-                    <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
-                    <img src="images/floor.jpg" alt="project" class="avatar">
-                    <h1 class="project_details" style="text-align:center">Project Details</h1>
-                  </div>
-
-                  <div class="container">
-                    <input type="text" value="Two-Way Communication System for Deaf People" readonly>
-                    <textarea class="project_description" rows="4" readonly>This application bridges accessibility challenges by enabling structural voice or text inputs to be parsed and seamlessly converted into text-based formats for deaf users. Designed to improve high-velocity real-time human communication.</textarea>
-                    <input type="text" value="Technologies: HTML, CSS, JavaScript, Core APIs" readonly>
-                  </div>
-                </form>
-              </div>
-
             </section>
           </div>
+
           <div id="contact">
             <section class="clearfix">
               <div class="g1">
-                <div class="sny-icon-box">
-                  <div class="sny-icon">
-                    <i class="icon-globe"></i>
-                  </div>
-                  <div class="sny-icon-content">
-                    <h4>
-                      Address
-                    </h4>
-                    <p>
-                      #365, 2nd A Main, 2nd Cross,<br>
-                      Kuvempunagar M Block,<br>
-                      Mysore – 570023
-                    </p>
-                  </div>
-                </div>
+                <h4 style="color: #ffffff;">Current Address</h4>
+                <p style="color: #cbd5e1;">
+                  #365, 2nd A Main, 2nd Cross,<br>
+                  Kuvempunagar M Block,<br>
+                  Mysore – 570023
+                </p>
               </div>
               <div class="g1">
-                <div class="sny-icon-box">
-                  <div class="sny-icon">
-                    <i class="icon-phone"></i>
-                  </div>
-                  <div class="sny-icon-content">
-                    <h4>
-                      E-mail / Contact
-                    </h4>
-                    <p>
-                      adarshvpujar143@gmail.com<br />
-                      +91 9886103154
-                    </p>
-                  </div>
-                </div>
+                <h4 style="color: #ffffff;">Immediate Availability</h4>
+                <p style="color: #cbd5e1;">Actively interviewing for Frontend Developer & Associate Software Engineer roles.</p>
               </div>
-              <div class="g1">
-                <div class="sny-icon-box">
-                  <div class="sny-icon">
-                    <i class="icon-user"></i>
-                  </div>
-                  <div class="sny-icon-content">
-                    <h4>
-                      Professional Status
-                    </h4>
-                    <p>
-                      Information Science Graduate looking for immediate Frontend Dev & Engineering roles.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="break"></div>
             </section>
           </div>
-          </div>
+
+        </div>
       </div>
     </div>
   </div>
 </body>
-
-                  </html>
-                  
+</html>
