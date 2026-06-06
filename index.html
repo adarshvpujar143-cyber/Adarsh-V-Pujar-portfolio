@@ -37,22 +37,27 @@
     #main-dashboard-view {
       opacity: 1;
       display: block;
+      animation: fadeInMain 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInMain {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     section {
-      padding: 60px 20px;
+      padding: 45px 20px;
       max-width: 900px;
       margin: 0 auto;
-      opacity: 1 !important;
-      transform: none !important;
     }
 
+    /* Premium Top Header Navigation */
     .top-bar {
       position: sticky;
       top: 0;
       width: 100%;
       height: 70px;
-      background: rgba(5, 7, 15, 0.8);
+      background: rgba(5, 7, 15, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -60,7 +65,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 40px;
+      padding: 0 25px;
     }
 
     .top-bar-user {
@@ -79,22 +84,23 @@
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 15px;
       list-style: none;
     }
 
     .nav-links a {
       color: var(--text-dim);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      transition: color 0.3s;
+      transition: color 0.3s ease;
     }
 
     .nav-links a:hover { color: var(--accent); }
 
+    /* Animated Hero Component */
     .hero-container {
-      padding: 60px 20px 20px 20px;
+      padding: 50px 20px 10px 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -103,13 +109,18 @@
     }
 
     .hero-avatar {
-      width: 180px;
-      height: 180px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       padding: 5px;
       background: linear-gradient(135deg, var(--accent), #a855f7);
-      box-shadow: 0 0 40px var(--accent-glow);
-      margin-bottom: 25px;
+      box-shadow: 0 0 35px var(--accent-glow);
+      margin-bottom: 20px;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .hero-avatar:hover {
+      transform: scale(1.05) rotate(3deg);
     }
 
     .hero-avatar img {
@@ -120,25 +131,25 @@
     }
 
     .hero-container h1 {
-      font-size: 48px;
+      font-size: 40px;
       font-weight: 800;
       background: linear-gradient(to right, #ffffff, #94a3b8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .hero-container p {
       color: var(--accent);
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
 
     .section-title {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 800;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       display: flex;
       align-items: center;
       gap: 15px;
@@ -154,32 +165,41 @@
     .card {
       background: var(--bg-card);
       border: 1px solid rgba(255, 255, 255, 0.04);
-      border-radius: 24px;
-      padding: 30px;
+      border-radius: 20px;
+      padding: 25px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      transition: border-color 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.08);
     }
 
     .edu-box {
       border-left: 2px solid var(--accent);
       padding-left: 20px;
       margin-bottom: 25px;
+      transition: transform 0.3s ease;
+    }
+
+    .edu-box:hover {
+      transform: translateX(4px);
     }
 
     .college-card-anchor {
       display: block;
       text-decoration: none;
       color: inherit;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.01);
+      border: 1px solid rgba(255,255,255,0.04);
       border-radius: 16px;
       padding: 20px;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .college-card-anchor:hover {
-      background: rgba(99, 102, 241, 0.05);
-      border-color: var(--accent);
-      transform: translateX(4px);
+      background: rgba(99, 102, 241, 0.04);
+      border-color: rgba(99, 102, 241, 0.3);
     }
 
     .college-logo-banner {
@@ -189,61 +209,65 @@
       border-radius: 12px;
       margin-bottom: 15px;
       overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
     }
 
     .college-logo-banner img { width: 100%; height: 100%; object-fit: cover; }
     .timeline-date { font-size: 13px; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
 
+    /* Interactive Project Cards Array Grid */
     .project-container-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
     }
 
     .project-card-v2 {
       background: var(--bg-card);
       border: 1px solid rgba(255, 255, 255, 0.04);
-      border-radius: 24px;
+      border-radius: 20px;
       overflow: hidden;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .project-card-v2:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px);
       border-color: rgba(99, 102, 241, 0.3);
-      box-shadow: 0 20px 40px rgba(99,102,241,0.15);
+      box-shadow: 0 15px 35px rgba(99,102,241,0.15);
     }
 
     .project-thumb {
       width: 100%;
-      height: 200px;
+      height: 180px;
       background: #0f1424;
       overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
     }
 
     .project-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .project-card-v2:hover .project-thumb img {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
 
-    .project-details-body { padding: 25px; }
+    .project-details-body { padding: 20px; }
     .project-tag {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       color: var(--accent);
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       display: inline-block;
     }
 
+    /* Subpage Framer Engine */
     .subpage-container {
       display: none;
       position: absolute;
@@ -253,24 +277,30 @@
       min-height: 100vh;
       background: var(--bg-deep);
       z-index: 2000;
-      padding: 60px 20px;
+      padding: 40px 20px;
     }
 
     .subpage-inner {
       max-width: 800px;
       margin: 0 auto;
+      animation: subpageSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes subpageSlideIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .back-btn {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
       color: var(--text-bright);
-      padding: 12px 24px;
+      padding: 10px 20px;
       border-radius: 30px;
       cursor: pointer;
       font-weight: 600;
-      font-size: 14px;
-      margin-bottom: 35px;
+      font-size: 13px;
+      margin-bottom: 25px;
       transition: all 0.3s;
     }
 
@@ -281,14 +311,14 @@
 
     .subpage-hero-img {
       width: 100%;
-      height: 380px;
-      border-radius: 24px;
+      height: 320px;
+      border-radius: 20px;
       object-fit: cover;
-      margin-bottom: 35px;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      margin-bottom: 30px;
+      border: 1px solid rgba(255,255,255,0.06);
     }
 
+    /* Correct Hobbies Layout Matrix */
     .interests-layout-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -300,25 +330,41 @@
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.04);
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
     }
 
-    .interest-card:hover { transform: translateY(-4px); }
-    .interest-photo { width: 100%; height: 160px; background: #111625; }
-    .interest-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .interest-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .interest-photo { 
+      width: 100%; 
+      height: 160px; 
+      background: #111625;
+      overflow: hidden;
+    }
+
+    .interest-photo img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+    }
+
     .interest-caption { padding: 20px; }
 
+    /* Skills Grid UI Interaction */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
     }
 
     .skill-item {
       background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 16px;
-      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 14px;
+      border-radius: 14px;
       text-align: center;
       font-weight: 600;
       font-size: 13px;
@@ -328,13 +374,15 @@
     .skill-item:hover {
       background: var(--accent);
       box-shadow: 0 10px 20px var(--accent-glow);
+      border-color: transparent;
+      transform: translateY(-2px);
     }
 
-    .strengths-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+    .strengths-grid { display: flex; flex-wrap: wrap; gap: 10px; }
     .strength-badge {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      padding: 10px 20px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.08));
+      border: 1px solid rgba(99, 102, 241, 0.15);
+      padding: 8px 18px;
       border-radius: 30px;
       font-size: 13px;
       font-weight: 600;
@@ -342,7 +390,7 @@
 
     .connect-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 12px;
     }
 
@@ -350,7 +398,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.06);
       padding: 14px;
@@ -374,7 +421,7 @@
   <div class="top-bar">
     <div class="top-bar-user">
       <img src="my.jpg" alt="Adarsh">
-      <h2 style="font-size:16px; font-weight:700;">Adarsh V Pujar</h2>
+      <h2 style="font-size:15px; font-weight:700;">Adarsh V Pujar</h2>
     </div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -460,7 +507,7 @@
         </div>
 
         <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;">
-          <h4 style="color:#fff; margin-bottom:8px; font-size:14px; text-transform:uppercase;">Certifications</h4>
+          <h4 style="color:#fff; margin-bottom:8px; font-size:13px; text-transform:uppercase; letter-spacing:0.5px;">Certifications</h4>
           <p style="font-size:14px; color:var(--text-dim);">• Full Stack UI Web Development Internship Credentials — HP Pavilion</p>
         </div>
 
@@ -495,7 +542,7 @@
           </div>
           <div class="project-details-body">
             <span class="project-tag">Speech APIs / JavaScript</span>
-            <h3 style="color:#fff; margin-bottom:8px; font-size:18px;">Two-Way Communication System</h3>
+            <h3 style="color:#fff; margin-bottom:6px; font-size:17px;">Two-Way Communication System</h3>
             <p style="font-size:13px; color:var(--text-dim)">Click to launch real-time text parsing system engineered for deaf accessibility channels.</p>
           </div>
         </div>
@@ -506,7 +553,7 @@
           </div>
           <div class="project-details-body">
             <span class="project-tag">Full Stack / SQL Database</span>
-            <h3 style="color:#fff; margin-bottom:8px; font-size:18px;">Car Management System</h3>
+            <h3 style="color:#fff; margin-bottom:6px; font-size:17px;">Car Management System</h3>
             <p style="font-size:13px; color:var(--text-dim)">Click to review core Python operational matrix managing commercial fleet data grids.</p>
           </div>
         </div>
@@ -518,14 +565,18 @@
       <h2 class="section-title">Interests & Hobbies</h2>
       <div class="interests-layout-grid">
         <div class="interest-card">
-          <div class="interest-photo"><img src="my.jpg" alt="Cricket"></div>
+          <div class="interest-photo">
+            <img src="31759.jpg" alt="Cricket Turf">
+          </div>
           <div class="interest-caption">
             <h4 style="color:#fff; margin-bottom:4px;">Cricket</h4>
             <p style="font-size:13px; color:var(--text-dim);">Passionate about playing active tournaments and analyzing match files.</p>
           </div>
         </div>
         <div class="interest-card">
-          <div class="interest-photo"><img src="floor.jpg" alt="Traveling"></div>
+          <div class="interest-photo">
+            <img src="floor.jpg" alt="Traveling Destination Path">
+          </div>
           <div class="interest-caption">
             <h4 style="color:#fff; margin-bottom:4px;">Traveling</h4>
             <p style="font-size:13px; color:var(--text-dim);">Exploring physical architectural properties and diverse destination trails.</p>
@@ -552,8 +603,8 @@
     <div class="subpage-inner">
       <button class="back-btn" onclick="exitProjectPage('page-project-communication')">← Return to Portfolio</button>
       <img src="31756.jpg" class="subpage-hero-img" alt="Two-Way Communication Detailed View">
-      <h1 style="font-size:36px; color:#fff; margin-bottom:20px; font-weight:800;">Two-Way Communication System for Deaf People</h1>
-      <div class="card" style="margin-bottom:20px;">
+      <h1 style="font-size:32px; color:#fff; margin-bottom:20px; font-weight:800;">Two-Way Communication System for Deaf People</h1>
+      <div class="card">
         <h4 style="color:var(--accent); text-transform:uppercase; font-size:12px; margin-bottom:6px;">Project Core Overview</h4>
         <p style="color:var(--text-bright); font-size:15px;">An assistive technology framework engineered to eliminate systemic communication barriers for the hearing impaired. Uses native Web Speech Recognition API modules to translate incoming acoustic arrays into text instantaneously with latency under 0.8 seconds.</p>
       </div>
@@ -564,11 +615,11 @@
     <div class="subpage-inner">
       <button class="back-btn" onclick="exitProjectPage('page-project-cars')">← Return to Portfolio</button>
       <img src="31738.jpg" class="subpage-hero-img" alt="Car Management Detailed View">
-      <h1 style="font-size:36px; color:#fff; margin-bottom:20px; font-weight:800;">Car Management System Portal</h1>
+      <h1 style="font-size:32px; color:#fff; margin-bottom:20px; font-weight:800;">Car Management System Portal</h1>
       <div class="card">
         <h4 style="color:var(--accent); text-transform:uppercase; font-size:12px; margin-bottom:6px;">Project Core Overview</h4>
-        <p style="color:var(--text-bright); font-size:15px;">A full-scale internal administrative application framework built with Python core architecture structures and relational database structures to securely map, update, track, and record transaction modules for enterprise commercial fleets.</p>
-      </div>
+        <p style="color:var(--text-bright); font-size:15px;">A full-scale internal administrative application framewor
+        </div>
     </div>
   </div>
 
