@@ -9,7 +9,7 @@
   <style>
     :root {
       --bg-deep: #05070f;
-      --bg-card: rgba(13, 18, 35, 0.8);
+      --bg-card: rgba(13, 18, 35, 0.85);
       --accent: #6366f1;
       --accent-glow: rgba(99, 102, 241, 0.4);
       --text-bright: #f8fafc;
@@ -37,21 +37,21 @@
     #main-dashboard-view {
       opacity: 1;
       display: block;
-      animation: fadeInMain 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: superFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    @keyframes fadeInMain {
+    @keyframes superFadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     section {
-      padding: 45px 20px;
+      padding: 35px 20px;
       max-width: 900px;
       margin: 0 auto;
     }
 
-    /* Premium Top Header Navigation */
+    /* Premium Sticky Navigation Bar */
     .top-bar {
       position: sticky;
       top: 0;
@@ -98,9 +98,9 @@
 
     .nav-links a:hover { color: var(--accent); }
 
-    /* Animated Hero Component */
+    /* Animated Profile Hero Header */
     .hero-container {
-      padding: 50px 20px 10px 20px;
+      padding: 40px 20px 10px 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -109,18 +109,13 @@
     }
 
     .hero-avatar {
-      width: 160px;
-      height: 160px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      padding: 5px;
+      padding: 4px;
       background: linear-gradient(135deg, var(--accent), #a855f7);
       box-shadow: 0 0 35px var(--accent-glow);
-      margin-bottom: 20px;
-      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .hero-avatar:hover {
-      transform: scale(1.05) rotate(3deg);
+      margin-bottom: 18px;
     }
 
     .hero-avatar img {
@@ -131,7 +126,7 @@
     }
 
     .hero-container h1 {
-      font-size: 40px;
+      font-size: 38px;
       font-weight: 800;
       background: linear-gradient(to right, #ffffff, #94a3b8);
       -webkit-background-clip: text;
@@ -168,22 +163,12 @@
       border-radius: 20px;
       padding: 25px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      transition: border-color 0.3s ease;
-    }
-
-    .card:hover {
-      border-color: rgba(255, 255, 255, 0.08);
     }
 
     .edu-box {
       border-left: 2px solid var(--accent);
       padding-left: 20px;
       margin-bottom: 25px;
-      transition: transform 0.3s ease;
-    }
-
-    .edu-box:hover {
-      transform: translateX(4px);
     }
 
     .college-card-anchor {
@@ -194,12 +179,6 @@
       border: 1px solid rgba(255,255,255,0.04);
       border-radius: 16px;
       padding: 20px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .college-card-anchor:hover {
-      background: rgba(99, 102, 241, 0.04);
-      border-color: rgba(99, 102, 241, 0.3);
     }
 
     .college-logo-banner {
@@ -209,13 +188,12 @@
       border-radius: 12px;
       margin-bottom: 15px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
     }
 
     .college-logo-banner img { width: 100%; height: 100%; object-fit: cover; }
     .timeline-date { font-size: 13px; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
 
-    /* Interactive Project Cards Array Grid */
+    /* Interactive Project Layout Grid Cards */
     .project-container-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -228,13 +206,13 @@
       border-radius: 20px;
       overflow: hidden;
       cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .project-card-v2:hover {
-      transform: translateY(-6px);
-      border-color: rgba(99, 102, 241, 0.3);
-      box-shadow: 0 15px 35px rgba(99,102,241,0.15);
+      transform: translateY(-5px);
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 0 15px 30px rgba(99,102,241,0.15);
     }
 
     .project-thumb {
@@ -242,18 +220,12 @@
       height: 180px;
       background: #0f1424;
       overflow: hidden;
-      border-bottom: 1px solid rgba(255,255,255,0.03);
     }
 
     .project-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .project-card-v2:hover .project-thumb img {
-      transform: scale(1.06);
     }
 
     .project-details-body { padding: 20px; }
@@ -267,41 +239,52 @@
       display: inline-block;
     }
 
-    /* Subpage Framer Engine */
+    /* FULL-SCREEN PREMIUM POPUP OVERLAY SYSTEM */
     .subpage-container {
       display: none;
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      min-height: 100vh;
-      background: var(--bg-deep);
-      z-index: 2000;
-      padding: 40px 20px;
+      height: 100vh;
+      background: rgba(5, 7, 15, 0.98);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      z-index: 9999;
+      overflow-y: auto;
+      padding: 30px 20px;
+    }
+
+    /* Smooth Slide-Up Card Animation */
+    .subpage-container.active {
+      display: block;
     }
 
     .subpage-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      animation: subpageSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      max-width: 750px;
+      margin: 40px auto;
+      animation: premiumSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    @keyframes subpageSlideIn {
-      from { opacity: 0; transform: scale(0.96); }
-      to { opacity: 1; transform: scale(1); }
+    @keyframes premiumSlideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .back-btn {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
       color: var(--text-bright);
-      padding: 10px 20px;
+      padding: 12px 24px;
       border-radius: 30px;
       cursor: pointer;
-      font-weight: 600;
-      font-size: 13px;
+      font-weight: 700;
+      font-size: 14px;
       margin-bottom: 25px;
-      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
     }
 
     .back-btn:hover {
@@ -311,14 +294,15 @@
 
     .subpage-hero-img {
       width: 100%;
-      height: 320px;
+      height: 300px;
       border-radius: 20px;
       object-fit: cover;
-      margin-bottom: 30px;
-      border: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 25px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
 
-    /* Correct Hobbies Layout Matrix */
+    /* Hobbies Layout Matrix */
     .interests-layout-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -330,30 +314,13 @@
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.04);
-      transition: all 0.3s ease;
     }
 
-    .interest-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 255, 255, 0.08);
-    }
-
-    .interest-photo { 
-      width: 100%; 
-      height: 160px; 
-      background: #111625;
-      overflow: hidden;
-    }
-
-    .interest-photo img { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-    }
-
+    .interest-photo { width: 100%; height: 160px; background: #111625; }
+    .interest-photo img { width: 100%; height: 100%; object-fit: cover; }
     .interest-caption { padding: 20px; }
 
-    /* Skills Grid UI Interaction */
+    /* Technical Skills Grid Framework */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -412,7 +379,6 @@
     .connect-link-pill:hover {
       background: var(--accent);
       box-shadow: 0 10px 20px var(--accent-glow);
-      transform: translateY(-2px);
     }
   </style>
 </head>
@@ -536,18 +502,18 @@
       <h2 class="section-title">Engineering Projects</h2>
       <div class="project-container-grid">
         
-        <div class="project-card-v2" onclick="navigateToProjectPage('page-project-communication')">
+        <div class="project-card-v2" onclick="openProjectPopup('page-project-communication')">
           <div class="project-thumb">
             <img src="31756.jpg" alt="Two-Way Communication System Hub">
           </div>
           <div class="project-details-body">
             <span class="project-tag">Speech APIs / JavaScript</span>
             <h3 style="color:#fff; margin-bottom:6px; font-size:17px;">Two-Way Communication System</h3>
-            <p style="font-size:13px; color:var(--text-dim)">Click to launch real-time text parsing system engineered for deaf accessibility channels.</p>
+            <p style="font-size:13px; color:var(--text-dim)">Click to view real-time text parsing system engineered for deaf accessibility channels.</p>
           </div>
         </div>
 
-        <div class="project-card-v2" onclick="navigateToProjectPage('page-project-cars')">
+        <div class="project-card-v2" onclick="openProjectPopup('page-project-cars')">
           <div class="project-thumb">
             <img src="31738.jpg" alt="Car Management System Controls">
           </div>
@@ -575,7 +541,7 @@
         </div>
         <div class="interest-card">
           <div class="interest-photo">
-            <img src="floor.jpg" alt="Traveling Destination Path">
+            <img src="31742.jpg" alt="Traveling Destination Path">
           </div>
           <div class="interest-caption">
             <h4 style="color:#fff; margin-bottom:4px;">Traveling</h4>
@@ -601,40 +567,49 @@
 
   <div id="page-project-communication" class="subpage-container">
     <div class="subpage-inner">
-      <button class="back-btn" onclick="exitProjectPage('page-project-communication')">← Return to Portfolio</button>
+      <button class="back-btn" onclick="closeProjectPopup('page-project-communication')">✕ Close Details</button>
       <img src="31756.jpg" class="subpage-hero-img" alt="Two-Way Communication Detailed View">
-      <h1 style="font-size:32px; color:#fff; margin-bottom:20px; font-weight:800;">Two-Way Communication System for Deaf People</h1>
+      <h1 style="font-size:30px; color:#fff; margin-bottom:15px; font-weight:800;">Two-Way Communication System for Deaf People</h1>
       <div class="card">
-        <h4 style="color:var(--accent); text-transform:uppercase; font-size:12px; margin-bottom:6px;">Project Core Overview</h4>
-        <p style="color:var(--text-bright); font-size:15px;">An assistive technology framework engineered to eliminate systemic communication barriers for the hearing impaired. Uses native Web Speech Recognition API modules to translate incoming acoustic arrays into text instantaneously with latency under 0.8 seconds.</p>
+        <h4 style="color:var(--accent); text-transform:uppercase; font-size:11px; margin-bottom:8px; letter-spacing:1px;">Project Core Architecture & Specifications</h4>
+        <p style="color:var(--text-bright); font-size:15px; text-align:justify; margin-bottom:15px;">
+          An assistive technology framework engineered to eliminate systemic communication barriers for the hearing impaired. Uses native Web Speech Recognition API modules to translate incoming acoustic arrays into text text-streams instantaneously with latency performance running under 0.8 seconds.
+        </p>
+        <p style="color:var(--text-dim); font-size:14px; text-align:justify;">
+          This full interactive platform enables speech translation protocols and provides fluid interface responses on mobile touch layers.
+        </p>
       </div>
     </div>
   </div>
 
   <div id="page-project-cars" class="subpage-container">
     <div class="subpage-inner">
-      <button class="back-btn" onclick="exitProjectPage('page-project-cars')">← Return to Portfolio</button>
+      <button class="back-btn" onclick="closeProjectPopup('page-project-cars')">✕ Close Details</button>
       <img src="31738.jpg" class="subpage-hero-img" alt="Car Management Detailed View">
-      <h1 style="font-size:32px; color:#fff; margin-bottom:20px; font-weight:800;">Car Management System Portal</h1>
+      <h1 style="font-size:30px; color:#fff; margin-bottom:15px; font-weight:800;">Car Management System Portal</h1>
       <div class="card">
-        <h4 style="color:var(--accent); text-transform:uppercase; font-size:12px; margin-bottom:6px;">Project Core Overview</h4>
-        <p style="color:var(--text-bright); font-size:15px;">A full-scale internal administrative application framewor
-        </div>
+        <h4 style="color:var(--accent); text-transform:uppercase; font-size:11px; margin-bottom:8px; letter-spacing:1px;">Project Core Architecture & Specifications</h4>
+        <p style="color:var(--text-bright); font-size:15px; text-align:justify; margin-bottom:15px;">
+          A full-scale internal administrative application framework built with Python core architecture structures and relational database structures to securely map, update, track, and record transaction modules for enterprise commercial fleets.
+        </p>
+        <p style="color:var(--text-dim); font-size:14px; te
+          Engineered with relational data queries optimizing fleet logging indexing systems across client dashboards.
+        </p>
+      </div>
     </div>
   </div>
 
   <script>
-    function navigateToProjectPage(pageId) {
-      document.getElementById('main-dashboard-view').style.display = 'none';
-      document.getElementById(pageId).style.display = 'block';
-      window.scrollTo(0, 0);
+    function openProjectPopup(popupId) {
+      document.getElementById(popupId).classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevents background body scrolling
     }
 
-    function exitProjectPage(pageId) {
-      document.getElementById(pageId).style.display = 'none';
-      document.getElementById('main-dashboard-view').style.display = 'block';
+    function closeProjectPopup(popupId) {
+      document.getElementById(popupId).classList.remove('active');
+      document.body.style.overflow = 'auto'; // Restores scrolling
     }
   </script>
 
 </body>
-</html>
+          </html>
