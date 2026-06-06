@@ -1,6 +1,40 @@
-# Adarsh-V-Pujar-portfolio
-The official personal portfolio of Adarsh V Pujar — Frontend Developer, Azure AI Engineer Associate, and Cybersecurity enthusiast. 
-Welcome to the official repository for the personal portfolio website of Adarsh V Pujar. This project serves as a comprehensive, interactive digital resume designed to showcase my technical expertise, academic background, certifications, and evolving professional journey. Built with a strong focus on responsive frontend design, clean user interfaces, and intuitive user experiences, this portfolio acts as a central hub for my engineering capabilities and creative problem-solving skills.
-The core objective of this project is to bridge the gap between software development and modern technology domains. It highlights my foundational strengths in programming languages and data management—specifically Java, Python, and SQL—alongside my specialized domain knowledge. Visitors can explore detailed sections dedicated to my practical projects, including frontend applications, data-driven solutions, and my deep passion for cybersecurity strategies, ethical hacking concepts, and defensive security frameworks.
-Furthermore, this portfolio proudly features my professional milestones and credentials, most notably my certification as a Microsoft Azure AI Engineer Associate issued by the ICT Academy. This credential underscores my capacity to integrate artificial intelligence, machine learning models, and cloud-native services into scalable, modern applications.
-By combining structural code, visual design, and real-world project documentation, this repository reflects my continuous commitment to learning, innovation, and technological growth. It stands as a testament to my readiness for impactful roles in technology. Feel free to explore the codebase, review my live deployment, examine my technical documentation, or reach out to collaborate on software development, cloud infrastructure, or cybersecurity initiatives.
+# Portfolio-Template
+A Portfolio/Resume website template for Programmers, Geeks, Developers, Hackers etc.
+
+### Highlights
+1. Setup is very easy and you get a portfolio template of your own for free.
+2. To add your details, you just need simple editing skills. No code changes required!
+3. Simple and Fast website User Interface.
+
+### Website UI Gallary
+#### About Tab
+![About Tab](https://i.postimg.cc/WpCWc7gB/1.png)
+
+#### Skills Tab
+![Skills Tab](https://i.postimg.cc/HL6zZ0TP/2.png)
+
+#### Project Tab
+![Project Tab](https://i.imgur.com/u4oyV6r.png)
+
+#### Contact Tab
+![Contact Tab](https://i.postimg.cc/Y0WxCJYJ/4.png)
+
+### Demo
+For Demo of this template you can visit http://0xprateek-portfolio-template.rf.gd
+
+### Quick Start
+If you are reading this then I will assume that you know something about code and want to make a resume website of yours then this open-source project may help you setup it to showcase all your creations without effort.
+- For adding your avatar , You have to replace images/my.jpg with your square photo [Perfect size : 160 x 160].
+- For changing background image, You need to replace images/floor.jpg with your prefered background.
+- For changing rest of the information, simply open index.html and you can easily understand everything.
+
+
+### Contributing
+Any and all contributions, issues, features and tips are welcome.
+
+### License
+**Portfolio-Template** is licence under [GPL v3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html)
+
+### Contact
+
+For any Suggestion / Ideas ping me at [@prateekis1](https://twitter.com/prateekis1)
